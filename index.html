@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Digital Product – Flow Ai + Flow Music + Omni বান্ডেল অফার</title>
+<link rel="icon" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<style>
+:root{--bg:#04061a;--card:#0c1236;--b:#22d3ff;--p:#a855f7;--t:#f1f4ff;--m:#9aa6d6;--g:linear-gradient(90deg,#22d3ff,#6d5cff,#d946ef)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hind Siliguri',sans-serif;color:var(--t);line-height:1.6;background:radial-gradient(900px 500px at 15% -5%,#2b2fd855,transparent),radial-gradient(800px 500px at 100% 20%,#a855f740,transparent),var(--bg);padding-top:38px}
+.w{max-width:1040px;margin:auto;padding:0 18px}
+.tick{position:fixed;top:0;left:0;right:0;height:38px;background:var(--g);color:#fff;font-weight:700;overflow:hidden;z-index:50;display:flex;align-items:center}
+.tick span{white-space:nowrap;padding-left:100%;animation:sc 18s linear infinite}
+@keyframes sc{to{transform:translateX(-100%)}}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+nav img{height:56px;border-radius:50%;box-shadow:0 0 20px #6d5cff88}
+.hero{text-align:center;padding:32px 0 10px}.brand{font-size:clamp(40px,12vw,76px);font-weight:700;line-height:1.1;background:var(--g);-webkit-background-clip:text;color:transparent;letter-spacing:1px;margin-bottom:10px;filter:drop-shadow(0 0 18px #6d5cff88)}.pnow{display:inline-block;background:#0b3d2a;border:1px solid #1fdc8a;color:#7dffc0;font-weight:700;border-radius:12px;padding:6px 14px;margin-bottom:16px}.hl{margin-top:12px;color:var(--b);font-weight:600}
+.chip{display:inline-block;border:1px solid #3a46a8;background:#111a4a;color:var(--b);padding:4px 16px;border-radius:30px;font-size:14px;font-weight:600}
+h1{font-size:clamp(28px,6.2vw,52px);line-height:1.2;margin:16px 0 10px}
+h1 em{font-style:normal;background:var(--g);-webkit-background-clip:text;color:transparent}
+.hero p{color:var(--m);max-width:580px;margin:0 auto}
+.offer{max-width:520px;margin:30px auto;background:linear-gradient(160deg,#121a52,#0a0f2e);border:1px solid #3a46a8;border-radius:28px;padding:30px 24px;position:relative;box-shadow:0 0 60px #6d5cff44}
+.offer:before{content:"";position:absolute;inset:-2px;border-radius:30px;background:var(--g);z-index:-1;filter:blur(14px);opacity:.55}
+.tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;font-weight:700;padding:3px 20px;border-radius:30px;font-size:14px;white-space:nowrap}
+.old{color:var(--m);font-size:22px;text-decoration:line-through}
+.price{font-size:68px;font-weight:700;line-height:1;background:var(--g);-webkit-background-clip:text;color:transparent}
+.price small{font-size:26px}
+.val{margin:10px 0 18px;color:#ffd166;font-weight:600}
+.btn{display:block;width:100%;border:0;cursor:pointer;font:inherit;font-size:20px;font-weight:700;color:#fff;padding:15px;border-radius:60px;background:linear-gradient(90deg,#2563ff,#a855f7,#ec4899);background-size:200%;animation:glow 1.6s ease-in-out infinite,mv 3s linear infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 12px #a855f7aa,0 0 0 0 #a855f788}50%{box-shadow:0 0 34px #22d3ff,0 0 0 12px #a855f700;transform:scale(1.04)}}
+@keyframes mv{to{background-position:200%}}
+.sec{text-align:center;font-size:clamp(24px,4vw,32px);margin:50px 0 6px}
+.sub{text-align:center;color:var(--m);margin-bottom:22px}
+.fg{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.f{background:var(--card);border:1px solid #232d72;border-radius:20px;padding:22px;transition:.25s}
+.f:hover{transform:translateY(-5px);border-color:var(--b);box-shadow:0 8px 30px #22d3ff30}
+.f i{font-style:normal;font-size:34px;display:block;margin-bottom:6px}
+.f b{display:block;font-size:26px;color:var(--b)}
+.f span{color:var(--m);font-size:15px}
+.steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));counter-reset:s}
+.st{background:var(--card);border-radius:18px;padding:18px 18px 18px 64px;position:relative;border:1px solid #232d72}
+.st:before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:16px;width:36px;height:36px;border-radius:50%;background:var(--g);display:grid;place-items:center;font-weight:700}
+.cta{margin:50px auto 0;max-width:420px}
+footer{text-align:center;color:var(--m);padding:40px 0 160px;font-size:14px}
+/* modal */
+.ov{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;z-index:100;padding:10px}body.mo{overflow:hidden}body.mo .wa,body.mo #cbt{display:none}
+.md{background:#0a1030;border:1px solid #3a46a8;border-radius:22px;padding:18px 16px 76px;width:100%;max-width:440px;max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px);overflow-y:auto;position:relative;margin:auto}
+.x{position:absolute;right:14px;top:10px;background:none;border:0;color:#fff;font-size:28px;cursor:pointer}
+.md h3{margin-bottom:10px;font-size:20px;padding-right:30px}
+.pay{background:#050820;border:1px dashed var(--p);border-radius:16px;padding:14px;margin-bottom:14px}
+.pay small{color:var(--m)}
+.row{display:flex;align-items:center;gap:8px;margin-top:8px}
+.row b{flex:1;font-size:24px;letter-spacing:1px;color:#ff5fa2}
+.row b.a{color:var(--b)}
+.cp{background:var(--p);color:#fff;border:0;border-radius:10px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer}
+label{display:block;font-size:13px;color:var(--m);margin:8px 0 3px;line-height:1.4}
+input{width:100%;padding:11px;border-radius:12px;border:1px solid #2a3470;background:#070c26;color:var(--t);font:inherit}
+input:focus{outline:2px solid var(--b)}
+.md .btn{margin-top:16px}
+/* floats */
+.wa{position:fixed;left:64px;bottom:14px;background:#25d366;color:#fff;border-radius:22px;padding:9px 16px;font-weight:700;font-size:14px;line-height:1.3;text-align:center;text-decoration:none;z-index:60;box-shadow:0 4px 20px #0008}.wa small{display:block;font-size:13px;letter-spacing:.5px}
+#cb{position:static}
+#cbt{display:flex;align-items:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:600;color:#fff;background:linear-gradient(135deg,#2563ff,var(--p));padding:10px 14px 10px 10px;border-radius:40px;box-shadow:0 0 22px #a855f7aa;max-width:210px;position:fixed;left:10px;bottom:14px;z-index:70;transition:.3s}#cbt.c span{display:none}#cbt.c{padding:10px}
+#cbt i{font-style:normal;font-size:24px}#cbt span{font-size:13px;text-align:left;line-height:1.3}
+#cbx{display:none;position:fixed;left:8px;bottom:72px;z-index:80;width:min(340px,calc(100vw - 16px));height:min(430px,62vh);background:var(--card);border:1px solid var(--p);border-radius:18px;flex-direction:column;overflow:hidden}
+#cbh{background:var(--g);padding:10px 14px;font-weight:700;display:flex;justify-content:space-between;align-items:center}#cbh button{background:none;border:0;color:#fff;font-size:24px;cursor:pointer}
+#cbm{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.m{padding:9px 13px;border-radius:14px;max-width:88%;white-space:pre-wrap}.u{align-self:flex-end;background:#2563ff}.a{background:#1b2350}
+.m a{display:inline-block;margin-top:8px;background:#25d366;color:#fff;padding:7px 14px;border-radius:30px;text-decoration:none;font-weight:700}
+#cbf{display:flex;gap:6px;padding:8px;border-top:1px solid #2a3470}#cbf input{flex:1;padding:10px}
+#mt{position:fixed;top:0;right:0;height:38px;width:50px;z-index:55;border:0;background:#141a63;color:#fff;font-size:20px;cursor:pointer}#bub{position:fixed;left:10px;bottom:70px;transform:scale(.6);transform-origin:left bottom;opacity:0;pointer-events:none;background:#fff;color:#111;font-weight:600;font-size:14px;line-height:1.35;padding:8px 14px;border-radius:16px 16px 16px 4px;max-width:180px;z-index:71;transition:.25s;box-shadow:0 4px 18px #0008}#bub.s{opacity:1;transform:scale(1)}body.mo #bub{display:none}
+#sp{position:fixed;inset:0;z-index:200;background:radial-gradient(700px 420px at 50% 20%,#2b2fd877,transparent),radial-gradient(600px 400px at 90% 90%,#a855f755,transparent),var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:16px;padding:24px}#sp .btn{max-width:300px}#sp p{color:var(--m)}#sp.h{display:none}
+</style>
+</head>
+<body>
+<div id="sp"><div class="brand">Digital Product</div><p>🔊 সাউন্ডসহ বিশেষ অফার দেখতে<br>নিচের বাটনে ট্যাপ করুন</p><button class="btn" id="spb">🎁 অফার দেখুন</button></div>
+<button id="mt" onclick="mute()" aria-label="মিউট/আনমিউট">🔊</button>
+<div class="tick"><span>📞 আমাদের হটলাইন নাম্বার - 01602201823 (হোয়াটসঅ্যাপ) এ মেসেজ করুন &nbsp;&nbsp;•&nbsp;&nbsp; 🔥 Flow Ai + Flow Music + Omni বান্ডেল অফার মাত্র ৯৯৯ টাকা</span></div>
+<div class="w">
+
+<section class="hero" id="top">
+<div class="brand">Digital Product</div><span class="chip">⚡ সীমিত সময়ের অফার</span>
+<h1><em>Flow Ai + Flow Music + Omni</em><br>বান্ডেল অফার</h1>
+<p>এক প্যাকেজেই এআই ভিডিও, মিউজিক ও ক্রিয়েটিভ টুলস। ৬ মাসের মেয়াদ, সকল অফিসিয়াল ফিচারসহ।</p>
+<div class="offer">
+<div class="tag">🔥 ৪৪% ছাড় চলছে</div>
+<div class="old">মূল্য ১৮০০ টাকা</div>
+<div class="price"><small>৳</small>৯৯৯</div>
+<div class="val">⏳ মেয়াদ ৬ মাস • সকল অফিসিয়াল ফিচার</div><div class="pnow">✅ আগে সার্ভিস, পরে পেমেন্ট</div>
+<button class="btn" onclick="op()">🛒 অর্ডার করুন</button>
+<div class="hl">📞 হেল্পলাইন: 01602201823 (WhatsApp)</div>
+</div>
+</section>
+
+<h2 class="sec">প্যাকেজে যা যা পাচ্ছেন</h2>
+<p class="sub">সবকিছু একসাথে, এক দামে</p>
+<div class="fg">
+<div class="f"><i>🎬</i><b>১০,০০০</b><span>Flow Ai ক্রেডিট</span></div>
+<div class="f"><i>🎵</i><b>৩৫০০</b><span>Flow Music ক্রেডিট</span></div>
+<div class="f"><i>📹</i><b>২০ মিনিট</b><span>Omni প্রতিদিন ভিডিও</span></div>
+<div class="f"><i>🖥️</i><b>৭২০ পিক্সেল</b><span>ভিডিও রেজুলেশন</span></div>
+<div class="f"><i>📅</i><b>৬ মাস</b><span>সাবস্ক্রিপশন মেয়াদ</span></div>
+<div class="f"><i>✅</i><b>১০০%</b><span>সকল অফিসিয়াল ফিচার</span></div>
+</div>
+
+<h2 class="sec">কিভাবে অর্ডার করবেন</h2>
+<p class="sub">মাত্র ৩টি সহজ ধাপ</p>
+<div class="steps">
+<div class="st"><b>অর্ডার বাটনে ক্লিক করুন</b><br><span style="color:var(--m)">ফর্ম খুলবে</span></div>
+<div class="st"><b>বিকাশে Send Money</b><br><span style="color:var(--m)">নাম্বার কপি করে ৯৯৯ টাকা পাঠান</span></div>
+<div class="st"><b>তথ্য দিয়ে কনফার্ম করুন</b><br><span style="color:var(--m)">WhatsApp এ সরাসরি যুক্ত হবেন</span></div>
+</div>
+<div class="cta"><button class="btn" onclick="op()">🛒 অর্ডার করুন - মাত্র ৯৯৯ টাকা</button></div>
+<footer>© Digital Product — সব অধিকার সংরক্ষিত</footer>
+</div>
+
+<div class="ov" id="ov" onclick="if(event.target===this)cl()">
+<div class="md"><button class="x" onclick="cl()">×</button>
+<h3>🛒 অর্ডার ফর্ম</h3>
+<div class="pay"><b>ধাপ ১:</b> সার্ভিস পাওয়ার পর বিকাশ থেকে <b>Send Money</b> করুন<br><small>বিকাশ পার্সোনাল • আগে সার্ভিস, পরে পেমেন্ট</small>
+<div class="row"><b id="bn">01602201823</b><button class="cp" onclick="cp('bn',this)">কপি</button></div>
+<div class="row"><b class="a" id="am">999</b><button class="cp" onclick="cp('am',this)">কপি</button></div></div>
+<b>ধাপ ২:</b> নিচের তথ্য দিন
+<form id="f">
+<label>আপনার নাম</label><input id="nm" required>
+<label>আপনার ইমেইল</label><input id="em" type="email" required>
+<label>বিকাশ নাম্বারের শেষ ৪ ডিজিট (যে নাম্বার থেকে পেমেন্ট করবেন)</label><input id="l4" inputmode="numeric" pattern="\d{4}" maxlength="4" required>
+<label>সাবস্ক্রিপশন মেইল (যে মেইলে সার্ভিস নিবেন)</label><input id="sm" type="email" required>
+<button class="btn" type="submit">✅ অর্ডার নাউ</button>
+</form></div></div>
+
+<a class="wa" id="wa" target="_blank">💬 হেল্পলাইন WhatsApp<small>01602201823</small></a>
+<div id="cb">
+<div id="cbx"><div id="cbh"><span>🤖 Digital Product সহকারী</span><button type="button" onclick="tg()">×</button></div><div id="cbm"><div class="m a">আমি কিভাবে আপনাকে সাহায্য করতে পারি?</div></div>
+<form id="cbf"><input id="cbi" placeholder="এখানে লিখুন..." autocomplete="off"><button class="cp">➤</button></form></div>
+<div id="bub">আমি কিভাবে আপনাকে সাহায্য করতে পারি?</div>
+<button id="cbt" class="c"><i>🤖</i><span>আমি কিভাবে আপনাকে সাহায্য করতে পারি?</span></button>
+</div>
+
+<script>
+const CONFIG={WA:"8801602201823",SUPA_URL:"https://YOUR-PROJECT.supabase.co",SUPA_KEY:"YOUR-ANON-PUBLIC-KEY"};
+const PKG="Flow Ai+Flow Music+Omni বান্ডেল (৬ মাস)",AMT=999;
+const $=id=>document.getElementById(id);
+let db=null;try{db=supabase.createClient(CONFIG.SUPA_URL,CONFIG.SUPA_KEY)}catch(e){}
+const wl=t=>"https://wa.me/"+CONFIG.WA+"?text="+encodeURIComponent(t);
+$('wa').href=wl("হ্যালো, Flow Ai+Flow Music+Omni বান্ডেল অফার সম্পর্কে জানতে চাই");
+function op(){$('ov').style.display='flex';document.body.classList.add('mo');$('cbx').style.display='none'}function cl(){$('ov').style.display='none';document.body.classList.remove('mo')}
+function cp(id,b){navigator.clipboard.writeText($(id).textContent.trim());const o=b.textContent;b.textContent='✔ হয়েছে';setTimeout(()=>b.textContent=o,1400)}
+$('f').onsubmit=async e=>{e.preventDefault();
+ const r={name:$('nm').value.trim(),email:$('em').value.trim(),bkash_last4:$('l4').value.trim(),sub_email:$('sm').value.trim(),package:PKG,amount:AMT,status:'pending'};
+ try{if(db)await db.from('orders').insert(r)}catch(x){console.error(x)}
+ const msg=`🛒 *নতুন অর্ডার*\n━━━━━━━━━━━━\n📦 প্যাকেজ: ${r.package}\n💰 পরিমাণ: ৳${r.amount}\n━━━━━━━━━━━━\n👤 নাম: ${r.name}\n📧 ইমেইল: ${r.email}\n🔑 সাবস্ক্রিপশন মেইল: ${r.sub_email}\n💳 বিকাশ শেষ ৪ ডিজিট: ${r.bkash_last4}\n━━━━━━━━━━━━\n✅ আগে সার্ভিস, পরে পেমেন্ট\nআমার অর্ডারটি কনফার্ম করুন।`;
+ location.href=wl(msg)};
+/* চ্যাটবট: কাস্টমার যাই লিখুক, একই উত্তর */
+function tg(){const x=$('cbx');x.style.display=x.style.display==='flex'?'none':'flex'}$('cbt').onclick=tg;
+$('cbf').onsubmit=e=>{e.preventDefault();const q=$('cbi').value.trim();if(!q)return;$('cbi').value='';
+ const u=document.createElement('div');u.className='m u';u.textContent=q;$('cbm').appendChild(u);
+ setTimeout(()=>{const a=document.createElement('div');a.className='m a';
+  a.innerHTML='আসসালামু আলাইকুম! 😊\nআমাদের <b>Flow Ai+Flow Music+Omni</b> বান্ডেল অফারে আকর্ষণীয় ডিসকাউন্ট চলছে।\n✅ আগে সার্ভিস নিন, পরে পেমেন্ট করুন।\n💰 দাম মাত্র <b>৯৯৯ টাকা</b>।\nবিস্তারিত জানতে নিচের হোয়াটসঅ্যাপ বাটনে ক্লিক করুন।<br><a target="_blank" href="'+wl("আসসালামু আলাইকুম, বান্ডেল অফার সম্পর্কে বিস্তারিত জানতে চাই")+'">💬 WhatsApp এ মেসেজ করুন</a>';
+  $('cbm').appendChild(a);$('cbm').scrollTop=1e9},500)};
+
+/* ===== সাউন্ড ===== */
+let muted=false,played=false,AC=null,VA=null,unl=false,lastTry=0,hasMp3=false;
+try{muted=localStorage.getItem('mute')==='1'}catch(e){}
+$('mt').textContent=muted?'🔇':'🔊';
+const VT="অফার অফার অফার! এআই বান্ডেল সাবস্ক্রিপশনে ধামাকা অফার! মাত্র নয়শো নিরানব্বই টাকা। এখনই অর্ডার করুন!";
+function ac(){try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();if(AC.state==='suspended')AC.resume()}catch(e){}return AC}
+function tone(f1,f2,d,v,ty){if(muted||!unl)return;const c=ac();if(!c)return;const o=c.createOscillator(),g=c.createGain(),t=c.currentTime;o.type=ty||'sine';o.frequency.setValueAtTime(f1,t);o.frequency.exponentialRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(c.destination);o.start(t);o.stop(t+d)}
+const click=()=>tone(900,450,.08,.15,'triangle');
+const pop=()=>{tone(420,950,.12,.22);setTimeout(()=>tone(950,1350,.1,.14),90)};
+function speak(){if(!('speechSynthesis' in window))return;const s=speechSynthesis;if(s.speaking||s.pending)s.cancel();const u=new SpeechSynthesisUtterance(VT),bn=s.getVoices().filter(x=>/^bn/i.test(x.lang));u.voice=bn.find(x=>/female/i.test(x.name))||bn[0]||null;u.lang=u.voice?u.voice.lang:'bn-BD';u.pitch=1.25;u.rate=.95;u.onstart=()=>{played=true};u.onerror=()=>{lastTry=0};s.speak(u)}
+fetch('voice.mp3',{method:'HEAD'}).then(r=>{hasMp3=r.ok}).catch(()=>{});
+function voice(){if(muted||played||Date.now()-lastTry<1500)return;lastTry=Date.now();if(hasMp3){const a=new Audio('voice.mp3');VA=a;a.onplaying=()=>{played=true};a.play().catch(()=>{lastTry=0})}else speak()}
+function mute(){muted=!muted;try{localStorage.setItem('mute',muted?'1':'0')}catch(e){}$('mt').textContent=muted?'🔇':'🔊';if(muted){try{speechSynthesis.cancel();VA&&VA.pause()}catch(e){}}}
+voice();addEventListener('load',voice);
+/* ব্রাউজার অটো-সাউন্ড আটকায়, তাই প্রথম টাচ/ক্লিকেই ভয়েস চালু হবে */
+['click','touchend','pointerup','keydown'].forEach(e=>addEventListener(e,()=>{unl=true;ac();voice()},{passive:true}));
+document.addEventListener('click',click);
+/* চ্যাট বাবল: প্রতি ৪ সেকেন্ডে পপ করে আসবে ও যাবে */
+$('spb').onclick=()=>$('sp').classList.add('h');
+const SPLASH=true;if(!SPLASH)$('sp').classList.add('h');
+setInterval(()=>{if(!$('sp').classList.contains('h')||document.body.classList.contains('mo')||$('cbx').style.display==='flex')return;$('bub').classList.add('s');pop();setTimeout(()=>$('bub').classList.remove('s'),2200)},4000);
+</script>
+</body>
+</html>

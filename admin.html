@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin – Digital Product</title>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:'Hind Siliguri',sans-serif;background:#050818;color:#eef2ff;padding:18px}
+.c{max-width:1100px;margin:auto}input,select,button{font:inherit;padding:10px;border-radius:10px;border:1px solid #2a3470;background:#0d1330;color:#eef2ff}
+button{cursor:pointer;background:linear-gradient(90deg,#2563ff,#a855f7);border:0;font-weight:700}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.st{display:flex;gap:12px;flex-wrap:wrap;margin:16px 0}.st div{background:#0d1330;border:1px solid #2a3470;border-radius:14px;padding:14px 22px}.st b{font-size:26px;color:#22e1ff;display:block}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{padding:10px;border-bottom:1px solid #1b2350;text-align:left;font-size:14px}th{color:#9aa5d1}
+#lg{max-width:340px;margin:20vh auto;display:grid;gap:12px}a{color:#22e1ff}
+</style>
+</head>
+<body>
+<div id="lg"><h2>🔐 Admin Login</h2><input id="em" placeholder="Email"><input id="pw" type="password" placeholder="Password"><button onclick="login()">Login</button><small id="er" style="color:#ff6b6b"></small></div>
+<div class="c" id="ap" style="display:none">
+<div class="top"><h2>📦 অর্ডার তালিকা</h2><div><input id="q" placeholder="সার্চ (নাম/ইমেইল/৪ ডিজিট)" oninput="draw()"> <button onclick="load()">রিফ্রেশ</button> <button onclick="out()">Logout</button></div></div>
+<div class="st"><div><b id="s1">0</b>মোট অর্ডার</div><div><b id="s2">0</b>পেন্ডিং</div><div><b id="s3">0</b>ডেলিভারড</div><div><b id="s4">৳0</b>মোট বিক্রি</div></div>
+<div class="tw"><table><thead><tr><th>সময়</th><th>নাম</th><th>ইমেইল</th><th>সাবস্ক্রিপশন মেইল</th><th>বিকাশ ৪ ডিজিট</th><th>৳</th><th>স্ট্যাটাস</th><th></th></tr></thead><tbody id="tb"></tbody></table></div>
+</div>
+<script>
+/* index.html এর মতো একই Supabase তথ্য বসান */
+const SUPA_URL="https://YOUR-PROJECT.supabase.co",SUPA_KEY="YOUR-ANON-PUBLIC-KEY";
+const db=supabase.createClient(SUPA_URL,SUPA_KEY),$=id=>document.getElementById(id);let rows=[];
+async function login(){const{error}=await db.auth.signInWithPassword({email:$('em').value,password:$('pw').value});if(error)$('er').textContent='ভুল ইমেইল/পাসওয়ার্ড';else init()}
+async function out(){await db.auth.signOut();location.reload()}
+async function init(){const{data}=await db.auth.getSession();if(!data.session)return;$('lg').style.display='none';$('ap').style.display='block';load()}
+async function load(){const{data,error}=await db.from('orders').select('*').order('created_at',{ascending:false});if(error)return alert(error.message);rows=data;draw()}
+function draw(){const q=$('q').value.toLowerCase();
+ $('s1').textContent=rows.length;$('s2').textContent=rows.filter(r=>r.status=='pending').length;$('s3').textContent=rows.filter(r=>r.status=='delivered').length;
+ $('s4').textContent='৳'+rows.filter(r=>r.status=='delivered').reduce((a,r)=>a+r.amount,0);
+ $('tb').innerHTML=rows.filter(r=>(r.name+r.email+r.sub_email+r.bkash_last4).toLowerCase().includes(q)).map(r=>`<tr><td>${new Date(r.created_at).toLocaleString('bn-BD')}</td><td>${esc(r.name)}</td><td>${esc(r.email)}</td><td>${esc(r.sub_email)}</td><td>${esc(r.bkash_last4)}</td><td>${r.amount}</td><td><select onchange="setS(${r.id},this.value)">${['pending','delivered','cancelled'].map(s=>`<option ${s==r.status?'selected':''}>${s}</option>`).join('')}</select></td><td><button onclick="del(${r.id})">🗑</button></td></tr>`).join('')}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+async function setS(id,s){await db.from('orders').update({status:s}).eq('id',id);rows.find(r=>r.id==id).status=s;draw()}
+async function del(id){if(!confirm('মুছে ফেলবেন?'))return;await db.from('orders').delete().eq('id',id);load()}
+init();
+</script>
+</body>
+</html>
